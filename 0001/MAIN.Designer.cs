@@ -31,6 +31,7 @@
             this.PNL_MAIN = new System.Windows.Forms.Panel();
             this.PCT_CANVAS = new System.Windows.Forms.PictureBox();
             this.PNL_LEFT = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.PCT_THUMBNAIL = new System.Windows.Forms.PictureBox();
@@ -41,13 +42,13 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PNL_BOTTOM = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.BTN_SAVE = new System.Windows.Forms.Button();
             this.LBL_STATUS = new System.Windows.Forms.Label();
             this.PNL_HEAD = new System.Windows.Forms.Panel();
             this.BTN_RELOAD = new System.Windows.Forms.Button();
             this.BTN_EXE = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.PCT_Histogram = new System.Windows.Forms.PictureBox();
             this.PNL_MAIN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PCT_CANVAS)).BeginInit();
             this.PNL_LEFT.SuspendLayout();
@@ -55,6 +56,7 @@
             this.PNL_RIGHT.SuspendLayout();
             this.PNL_BOTTOM.SuspendLayout();
             this.PNL_HEAD.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PCT_Histogram)).BeginInit();
             this.SuspendLayout();
             // 
             // PNL_MAIN
@@ -75,9 +77,9 @@
             // 
             // PCT_CANVAS
             // 
-            this.PCT_CANVAS.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.PCT_CANVAS.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PCT_CANVAS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.PCT_CANVAS.Location = new System.Drawing.Point(277, 70);
             this.PCT_CANVAS.Name = "PCT_CANVAS";
@@ -99,6 +101,19 @@
             this.PNL_LEFT.Size = new System.Drawing.Size(250, 465);
             this.PNL_LEFT.TabIndex = 3;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(25, 73);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 27);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "SQUARES";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -119,8 +134,8 @@
             // 
             // PCT_THUMBNAIL
             // 
-            this.PCT_THUMBNAIL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.PCT_THUMBNAIL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PCT_THUMBNAIL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.PCT_THUMBNAIL.Location = new System.Drawing.Point(8, 350);
             this.PCT_THUMBNAIL.Name = "PCT_THUMBNAIL";
@@ -132,6 +147,7 @@
             // PNL_RIGHT
             // 
             this.PNL_RIGHT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.PNL_RIGHT.Controls.Add(this.PCT_Histogram);
             this.PNL_RIGHT.Controls.Add(this.BTN_SEPIA);
             this.PNL_RIGHT.Controls.Add(this.BTN_GRAY);
             this.PNL_RIGHT.Controls.Add(this.BTN_INVERT);
@@ -212,6 +228,16 @@
             this.PNL_BOTTOM.Size = new System.Drawing.Size(1115, 50);
             this.PNL_BOTTOM.TabIndex = 1;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.ForeColor = System.Drawing.Color.Silver;
+            this.textBox1.Location = new System.Drawing.Point(421, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(420, 19);
+            this.textBox1.TabIndex = 3;
+            // 
             // BTN_SAVE
             // 
             this.BTN_SAVE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -272,28 +298,17 @@
             this.BTN_EXE.UseVisualStyleBackColor = false;
             this.BTN_EXE.Click += new System.EventHandler(this.BTN_EXE_Click);
             // 
-            // textBox1
+            // PCT_Histogram
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.ForeColor = System.Drawing.Color.Silver;
-            this.textBox1.Location = new System.Drawing.Point(421, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(420, 19);
-            this.textBox1.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(25, 73);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 27);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "SQUARES";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.PCT_Histogram.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PCT_Histogram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.PCT_Histogram.Location = new System.Drawing.Point(7, 350);
+            this.PCT_Histogram.Name = "PCT_Histogram";
+            this.PCT_Histogram.Size = new System.Drawing.Size(231, 89);
+            this.PCT_Histogram.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PCT_Histogram.TabIndex = 11;
+            this.PCT_Histogram.TabStop = false;
             // 
             // MAIN
             // 
@@ -312,6 +327,7 @@
             this.PNL_BOTTOM.ResumeLayout(false);
             this.PNL_BOTTOM.PerformLayout();
             this.PNL_HEAD.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PCT_Histogram)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,6 +354,7 @@
         private System.Windows.Forms.Button BTN_SAVE;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox PCT_Histogram;
     }
 }
 
