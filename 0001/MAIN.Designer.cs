@@ -36,6 +36,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.PCT_THUMBNAIL = new System.Windows.Forms.PictureBox();
             this.PNL_RIGHT = new System.Windows.Forms.Panel();
+            this.BTN_CONTRASTE = new System.Windows.Forms.Button();
+            this.BTN_BRILLO = new System.Windows.Forms.Button();
+            this.BTN_HISTOGRAMA = new System.Windows.Forms.Button();
+            this.PCT_Histogram = new System.Windows.Forms.PictureBox();
             this.BTN_SEPIA = new System.Windows.Forms.Button();
             this.BTN_GRAY = new System.Windows.Forms.Button();
             this.BTN_INVERT = new System.Windows.Forms.Button();
@@ -48,15 +52,15 @@
             this.PNL_HEAD = new System.Windows.Forms.Panel();
             this.BTN_RELOAD = new System.Windows.Forms.Button();
             this.BTN_EXE = new System.Windows.Forms.Button();
-            this.PCT_Histogram = new System.Windows.Forms.PictureBox();
+            this.BTN_HISTOGRAMAGRISES = new System.Windows.Forms.Button();
             this.PNL_MAIN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PCT_CANVAS)).BeginInit();
             this.PNL_LEFT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PCT_THUMBNAIL)).BeginInit();
             this.PNL_RIGHT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PCT_Histogram)).BeginInit();
             this.PNL_BOTTOM.SuspendLayout();
             this.PNL_HEAD.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PCT_Histogram)).BeginInit();
             this.SuspendLayout();
             // 
             // PNL_MAIN
@@ -147,6 +151,10 @@
             // PNL_RIGHT
             // 
             this.PNL_RIGHT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.PNL_RIGHT.Controls.Add(this.BTN_HISTOGRAMAGRISES);
+            this.PNL_RIGHT.Controls.Add(this.BTN_CONTRASTE);
+            this.PNL_RIGHT.Controls.Add(this.BTN_BRILLO);
+            this.PNL_RIGHT.Controls.Add(this.BTN_HISTOGRAMA);
             this.PNL_RIGHT.Controls.Add(this.PCT_Histogram);
             this.PNL_RIGHT.Controls.Add(this.BTN_SEPIA);
             this.PNL_RIGHT.Controls.Add(this.BTN_GRAY);
@@ -158,6 +166,57 @@
             this.PNL_RIGHT.Name = "PNL_RIGHT";
             this.PNL_RIGHT.Size = new System.Drawing.Size(250, 465);
             this.PNL_RIGHT.TabIndex = 2;
+            // 
+            // BTN_CONTRASTE
+            // 
+            this.BTN_CONTRASTE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BTN_CONTRASTE.FlatAppearance.BorderSize = 0;
+            this.BTN_CONTRASTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_CONTRASTE.Location = new System.Drawing.Point(7, 214);
+            this.BTN_CONTRASTE.Name = "BTN_CONTRASTE";
+            this.BTN_CONTRASTE.Size = new System.Drawing.Size(115, 27);
+            this.BTN_CONTRASTE.TabIndex = 14;
+            this.BTN_CONTRASTE.Text = "CONTRASTE";
+            this.BTN_CONTRASTE.UseVisualStyleBackColor = false;
+            this.BTN_CONTRASTE.Click += new System.EventHandler(this.BTN_CONTRASTE_Click);
+            // 
+            // BTN_BRILLO
+            // 
+            this.BTN_BRILLO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BTN_BRILLO.FlatAppearance.BorderSize = 0;
+            this.BTN_BRILLO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_BRILLO.Location = new System.Drawing.Point(7, 181);
+            this.BTN_BRILLO.Name = "BTN_BRILLO";
+            this.BTN_BRILLO.Size = new System.Drawing.Size(115, 27);
+            this.BTN_BRILLO.TabIndex = 13;
+            this.BTN_BRILLO.Text = "BRILLO";
+            this.BTN_BRILLO.UseVisualStyleBackColor = false;
+            this.BTN_BRILLO.Click += new System.EventHandler(this.BNT_BRILLO_Click);
+            // 
+            // BTN_HISTOGRAMA
+            // 
+            this.BTN_HISTOGRAMA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BTN_HISTOGRAMA.FlatAppearance.BorderSize = 0;
+            this.BTN_HISTOGRAMA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_HISTOGRAMA.Location = new System.Drawing.Point(7, 284);
+            this.BTN_HISTOGRAMA.Name = "BTN_HISTOGRAMA";
+            this.BTN_HISTOGRAMA.Size = new System.Drawing.Size(181, 27);
+            this.BTN_HISTOGRAMA.TabIndex = 12;
+            this.BTN_HISTOGRAMA.Text = "HISTOGRAMA RGB";
+            this.BTN_HISTOGRAMA.UseVisualStyleBackColor = false;
+            this.BTN_HISTOGRAMA.Click += new System.EventHandler(this.BTN_HISTOGRAMA_Click);
+            // 
+            // PCT_Histogram
+            // 
+            this.PCT_Histogram.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PCT_Histogram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.PCT_Histogram.Location = new System.Drawing.Point(7, 350);
+            this.PCT_Histogram.Name = "PCT_Histogram";
+            this.PCT_Histogram.Size = new System.Drawing.Size(231, 89);
+            this.PCT_Histogram.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PCT_Histogram.TabIndex = 11;
+            this.PCT_Histogram.TabStop = false;
             // 
             // BTN_SEPIA
             // 
@@ -298,17 +357,18 @@
             this.BTN_EXE.UseVisualStyleBackColor = false;
             this.BTN_EXE.Click += new System.EventHandler(this.BTN_EXE_Click);
             // 
-            // PCT_Histogram
+            // BTN_HISTOGRAMAGRISES
             // 
-            this.PCT_Histogram.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PCT_Histogram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.PCT_Histogram.Location = new System.Drawing.Point(7, 350);
-            this.PCT_Histogram.Name = "PCT_Histogram";
-            this.PCT_Histogram.Size = new System.Drawing.Size(231, 89);
-            this.PCT_Histogram.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PCT_Histogram.TabIndex = 11;
-            this.PCT_Histogram.TabStop = false;
+            this.BTN_HISTOGRAMAGRISES.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.BTN_HISTOGRAMAGRISES.FlatAppearance.BorderSize = 0;
+            this.BTN_HISTOGRAMAGRISES.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_HISTOGRAMAGRISES.Location = new System.Drawing.Point(7, 317);
+            this.BTN_HISTOGRAMAGRISES.Name = "BTN_HISTOGRAMAGRISES";
+            this.BTN_HISTOGRAMAGRISES.Size = new System.Drawing.Size(181, 27);
+            this.BTN_HISTOGRAMAGRISES.TabIndex = 15;
+            this.BTN_HISTOGRAMAGRISES.Text = "HISTOGRAMA GRISES";
+            this.BTN_HISTOGRAMAGRISES.UseVisualStyleBackColor = false;
+            this.BTN_HISTOGRAMAGRISES.Click += new System.EventHandler(this.BTN_HISTOGRAMAGRISES_Click);
             // 
             // MAIN
             // 
@@ -324,10 +384,10 @@
             this.PNL_LEFT.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PCT_THUMBNAIL)).EndInit();
             this.PNL_RIGHT.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PCT_Histogram)).EndInit();
             this.PNL_BOTTOM.ResumeLayout(false);
             this.PNL_BOTTOM.PerformLayout();
             this.PNL_HEAD.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PCT_Histogram)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -355,6 +415,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox PCT_Histogram;
+        private System.Windows.Forms.Button BTN_HISTOGRAMA;
+        private System.Windows.Forms.Button BTN_BRILLO;
+        private System.Windows.Forms.Button BTN_CONTRASTE;
+        private System.Windows.Forms.Button BTN_HISTOGRAMAGRISES;
     }
 }
 

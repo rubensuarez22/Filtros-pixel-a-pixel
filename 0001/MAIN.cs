@@ -80,7 +80,7 @@ namespace _0001
             bmp     = new Bitmap(S, S);
             gr      = Graphics.FromImage(bmp);
             rnd     = new Random();
-            info    = new FileInfo("BODOQUE.JPG");
+            info    = new FileInfo("BODOQUE.JPEG");
 
             for (int x = 0; x < S; x++)
             {
@@ -101,7 +101,10 @@ namespace _0001
             canvas.Bmp = bmp;
 
             PCT_THUMBNAIL.Image = canvas.Bmp;
+        }
 
+        private void BTN_HISTOGRAMA_Click(object sender, EventArgs e)
+        {
             // Crear un Bitmap para el histograma
             Bitmap imagen = canvas.Bmp;
 
@@ -130,7 +133,7 @@ namespace _0001
             // Dibujar el histograma en el Bitmap
             using (Graphics R = Graphics.FromImage(histograma))
             {
-                R.Clear(Color.White);
+                R.Clear(Color.Black);
 
                 int maxFrecuencia = Math.Max(frecuenciasRojo.Max(), Math.Max(frecuenciasVerde.Max(), frecuenciasAzul.Max()));
                 float factorEscala = (histogramaAlto - 10) / (float)maxFrecuencia;
@@ -169,5 +172,65 @@ namespace _0001
             // Mostrar el histograma en el PictureBox
             PCT_Histogram.Image = histograma;
         }
+
+        private void BTN_CONTRASTE_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BNT_BRILLO_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BTN_HISTOGRAMAGRISES_Click(object sender, EventArgs e)
+        {
+            // Obtener la imagen desde bmp
+            Bitmap imagen = canvas.Bmp;
+
+            // Crear un arreglo para almacenar las frecuencias de los valores de píxeles en escala de grises
+            int[] frecuenciasGris = new int[256];
+
+            // Recorrer los píxeles de la imagen y actualizar las frecuencias
+            for (int y = 0; y < imagen.Height; y++)
+            {
+                for (int x = 0; x < imagen.Width; x++)
+                {
+                    Color color = imagen.GetPixel(x, y);
+                    int valorGris = (color.R + color.G + color.B) / 3; // Calcular el valor de gris promedio
+                    frecuenciasGris[valorGris]++;
+                }
+            }
+
+            // Crear un Bitmap para el histograma
+            int histogramaAncho = 256;
+            int histogramaAlto = PCT_Histogram.Height;
+            Bitmap histograma = new Bitmap(histogramaAncho, histogramaAlto);
+
+            // Dibujar el histograma en el Bitmap
+            using (Graphics g = Graphics.FromImage(histograma))
+            {
+                g.Clear(Color.White);
+
+                int maxFrecuencia = frecuenciasGris.Max();
+                float factorEscala = (histogramaAlto - 10) / (float)maxFrecuencia;
+
+                // Dibujar el histograma en escala de grises
+                for (int i = 0; i < 256; i++)
+                {
+                    int altura = (int)(frecuenciasGris[i] * factorEscala);
+                    for (int y = histogramaAlto - altura; y < histogramaAlto; y++)
+                    {
+                        histograma.SetPixel(i, y, Color.FromArgb(i, i, i)); // Usar el mismo valor de gris para los tres canales de color
+                    }
+                }
+            }
+
+            // Mostrar el histograma en el PictureBox
+            PCT_Histogram.Image = histograma;
+        }
+
+
+
     }
 }
