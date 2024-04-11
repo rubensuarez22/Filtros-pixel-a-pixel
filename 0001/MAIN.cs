@@ -80,7 +80,7 @@ namespace _0001
             bmp     = new Bitmap(S, S);
             gr      = Graphics.FromImage(bmp);
             rnd     = new Random();
-            info    = new FileInfo("BODOQUE.JPEG");
+            info    = new FileInfo("SQUARE.JPG");
 
             for (int x = 0; x < S; x++)
             {
@@ -175,12 +175,12 @@ namespace _0001
 
         private void BTN_CONTRASTE_Click(object sender, EventArgs e)
         {
-
+            AjusteContraste(factorContraste);
         }
 
         private void BNT_BRILLO_Click(object sender, EventArgs e)
         {
-
+            AjusteBrillo(valorBrillo);
         }
 
         private void BTN_HISTOGRAMAGRISES_Click(object sender, EventArgs e)
@@ -230,7 +230,76 @@ namespace _0001
             PCT_Histogram.Image = histograma;
         }
 
+        private void AjusteBrillo(int valor)
+        {
+            Bitmap imagen = canvas.Bmp;
 
+            for (int y = 0; y < imagen.Height; y++)
+            {
+                for (int x = 0; x < imagen.Width; x++)
+                {
+                    Color color = imagen.GetPixel(x, y);
+
+                    int r = color.R + valor;
+                    int g = color.G + valor;
+                    int b = color.B + valor;
+
+                    // Recortar los valores fuera del rango 0-255
+                    r = Math.Max(0, Math.Min(255, r));
+                    g = Math.Max(0, Math.Min(255, g));
+                    b = Math.Max(0, Math.Min(255, b));
+
+                    Color nuevoColor = Color.FromArgb(r, g, b);
+                    imagen.SetPixel(x, y, nuevoColor);
+                }
+            }
+
+            canvas.Bmp = imagen;
+            PCT_CANVAS.Invalidate();
+        }
+
+        private void AjusteContraste(float factor)
+        {
+            Bitmap imagen = canvas.Bmp;
+
+            for (int y = 0; y < imagen.Height; y++)
+            {
+                for (int x = 0; x < imagen.Width; x++)
+                {
+                    Color color = imagen.GetPixel(x, y);
+
+                    int r = (int)(factor * (color.R - 128) + 128);
+                    int g = (int)(factor * (color.G - 128) + 128);
+                    int b = (int)(factor * (color.B - 128) + 128);
+
+                    // Recortar los valores fuera del rango 0-255
+                    r = Math.Max(0, Math.Min(255, r));
+                    g = Math.Max(0, Math.Min(255, g));
+                    b = Math.Max(0, Math.Min(255, b));
+
+                    Color nuevoColor = Color.FromArgb(r, g, b);
+                    imagen.SetPixel(x, y, nuevoColor);
+                }
+            }
+
+            canvas.Bmp = imagen;
+            PCT_CANVAS.Invalidate();
+        }
+
+
+        // Para ajustar el brillo
+        int valorBrillo = 78; 
+        
+
+        // Para ajustar el contraste
+        float factorContraste = 1.8f; 
+
+        
+        
 
     }
+
+
+
+
 }
